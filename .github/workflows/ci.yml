@@ -73,7 +73,7 @@ jobs:
         version: ["v1_18","v1_17","v1_16","v1_15","v1_14","v1_13"]
         namespace: ["default","flink"]
         mode: ["native", "standalone"]
-        java-version: [ 11 ]
+        java-version: [ 11, 17 ]
         test:
           - test_application_kubernetes_ha.sh
           - test_application_operations.sh
@@ -86,9 +86,6 @@ jobs:
           - namespace: flink
             extraArgs: '--create-namespace --set "watchNamespaces={default,flink}"'
           - version: v1_18
-            image: ghcr.io\/apache\/flink-docker:1.18-SNAPSHOT-scala_2.12-java11-debian
-          - version: v1_18
-            java-version: 17
             image: ghcr.io\/apache\/flink-docker:1.18-SNAPSHOT-scala_2.12-java11-debian
           - version: v1_17
             image: flink:1.17
@@ -129,6 +126,16 @@ jobs:
             test: test_dynamic_config.sh
           - version: v1_17
             test: test_dynamic_config.sh
+          - version: v1_13
+            java-version: 17
+          - version: v1_14
+            java-version: 17
+          - version: v1_15
+            java-version: 17
+          - version: v1_16
+            java-version: 17
+          - version: v1_17
+            java-version: 17
     name: e2e_ci
     steps:
       - uses: actions/checkout@v2
