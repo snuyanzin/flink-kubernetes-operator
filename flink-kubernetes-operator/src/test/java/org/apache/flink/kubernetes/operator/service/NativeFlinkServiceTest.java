@@ -79,7 +79,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-/** @link FlinkService unit tests */
+/**
+ * @link FlinkService unit tests
+ */
 @EnableKubernetesMockClient(crud = true)
 public class NativeFlinkServiceTest {
     KubernetesClient client;
@@ -152,9 +154,7 @@ public class NativeFlinkServiceTest {
                             UpgradeMode upgradeMode,
                             Configuration conf,
                             boolean deleteClusterAfterSavepoint) {
-                        assertEquals(
-                                flinkVersion.isNewerVersionThan(FlinkVersion.v1_14) ? false : true,
-                                deleteClusterAfterSavepoint);
+                        assertEquals(false, deleteClusterAfterSavepoint);
                         tested.set(true);
                     }
                 };
